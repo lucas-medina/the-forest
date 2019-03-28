@@ -13,6 +13,7 @@ export default class CanvasRenderer {
     ];
 
     this.buildMenu();
+    this.renderSelectedCanvas = this.renderSelectedCanvas.bind(this);
   }
 
   buildMenu() {
