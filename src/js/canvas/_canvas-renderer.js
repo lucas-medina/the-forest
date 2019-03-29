@@ -1,4 +1,6 @@
 import Basics from './basics'
+import BasicColorLines from './basic-color-lines';
+import BasicsTwoTheAciddent from './basics-2-the-accident';
 
 export default class CanvasRenderer {
 
@@ -7,11 +9,15 @@ export default class CanvasRenderer {
     this.canvasElem = canvasElem;
     this.canvasElem.width = window.innerWidth;
     this.canvasElem.height = window.innerHeight;
+    this.currentCanvas;
 
     this.canvasList = [
-      new Basics('Basics', canvasElem)
+      new Basics('Basics', canvasElem),
+      new BasicColorLines('Color Lines #1', canvasElem),
+      new BasicsTwoTheAciddent('Basics #2 (It was an accident!)', canvasElem)
     ];
 
+    
     this.buildMenu();
     this.renderSelectedCanvas = this.renderSelectedCanvas.bind(this);
   }
@@ -29,6 +35,10 @@ export default class CanvasRenderer {
   renderSelectedCanvas(event) {
     const canvasId = window.location.hash.replace('#', '');
     const selectedCanvas = this.canvasList.find(item => item.code === canvasId);
+    if (this.currentCanvas) {
+      this.currentCanvas.clear();
+    }
+    this.currentCanvas = selectedCanvas;
     selectedCanvas.buildCanvas();
   }
 }

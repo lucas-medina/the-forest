@@ -69,6 +69,7 @@ body {
     padding: .5em 1em;
     color: #fff;
     border-bottom: 1px solid $bluey2;
+    white-space: nowrap;
     &:hover {
       background-color: $bluey2;
     }
