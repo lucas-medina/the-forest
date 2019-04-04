@@ -49,3 +49,7 @@ exports.default = series(
     taskServe
   )
 );
+
+exports.build = parallel(
+  taskHtml, taskSass, taskJS
+);
