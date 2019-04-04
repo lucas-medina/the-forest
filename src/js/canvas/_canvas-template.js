@@ -5,9 +5,6 @@ export default class CanvasTemplate {
     this.code = name.replace(/\s/g, '-').replace(/[^A-Za-z0-9\-]/g, '').toLowerCase();
     this.canvasElem = canvasElem;
     this.c2d = this.canvasElem.getContext('2d');
-    this.debugAnimation = false;
-    this.fpsControl = 0;
-    this.fpsDebugMax = 15;
     this.raf; // all requestAnimationFrame must point to this property
   }
   

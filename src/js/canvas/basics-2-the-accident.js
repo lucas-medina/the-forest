@@ -1,29 +1,26 @@
 import CanvasTemplate from './_canvas-template';
+import Colors from '../util/colors';
 
 export default class BasicsTwoTheAciddent extends CanvasTemplate {
 
   constructor(name, canvasElem) {
     super(name, canvasElem);
-    this.size = 25;
+    this.c2d = this.canvasElem.getContext('2d');
+    this.size = 20;
     this.x = Math.ceil(Math.random() * 200);
     this.y = Math.ceil(Math.random() * 200);
-    this.maxIncrementor = 150;
-    this.spacingIterations = 150;
+    this.incrementor = 150;
+    this.maxIncrementor = 300;
+    this.spacingIterations = 300;
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
-    this.c2d;
     this.goingDown = true;
     this.goingRight = true;
     this.debugAnimation = false;
   }
 
   rColor() {
-    let r = Math.floor(Math.random() * 255).toString(16);
-    let g = Math.floor(Math.random() * 255).toString(16);
-    let b = Math.floor(Math.random() * 255).toString(16);
-    let color = `#${r}${g}${b}`;
-    console.log(color);
-    return color; 
+    return Colors.randomColor();
   }
 
   init() {
@@ -37,8 +34,9 @@ export default class BasicsTwoTheAciddent extends CanvasTemplate {
 
   redoDirectionalSpeeds() {
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
-    this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
+    // this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.c2d.fillStyle = this.rColor();
+    console.log(this.vspeed, this.hspeed);
   }
 
   move() {
@@ -53,6 +51,7 @@ export default class BasicsTwoTheAciddent extends CanvasTemplate {
     }
 
     this.c2d.clearRect(0, 0, this.canvasElem.width, this.canvasElem.height);
+    // this.paintBg();
 
     const { size } = this;
     const maxHeight = this.canvasElem.height;
@@ -77,8 +76,10 @@ export default class BasicsTwoTheAciddent extends CanvasTemplate {
       let hMovement = horizontalIncrementor / this.spacingIterations;
       let vMovement = verticalIncrementor / this.spacingIterations;
       let coordsAndSize = [this.x += hMovement, this.y += vMovement, size, size];
+      this.c2d.globalAlpha = 1 / this.spacingIterations * (i + 1);
       this.c2d.fillRect(...coordsAndSize);
     }
+
     this.animate();
   }
 }

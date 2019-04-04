@@ -8,12 +8,10 @@ export default class Basics extends CanvasTemplate {
     this.x = 50;
     this.y = 50;
     this.incrementor = 10;
-    this.c2d;
     this.goingDown = true;
   }
 
   init() {
-    this.c2d = this.canvasElem.getContext('2d');
     this.c2d.fillStyle = '#000';
     this.animate();
   }

@@ -1,4 +1,5 @@
 import CanvasTemplate from './_canvas-template';
+import Colors from '../util/colors';
 
 export default class BasicColorLines extends CanvasTemplate {
 
@@ -11,23 +12,17 @@ export default class BasicColorLines extends CanvasTemplate {
     this.spacingIterations = 150;
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
-    this.c2d;
+    this.c2d = this.canvasElem.getContext('2d');
     this.goingDown = true;
     this.goingRight = true;
     this.debugAnimation = false;
   }
 
   rColor() {
-    let r = Math.floor(Math.random() * 255).toString(16);
-    let g = Math.floor(Math.random() * 255).toString(16);
-    let b = Math.floor(Math.random() * 255).toString(16);
-    let color = `#${r}${g}${b}`;
-    console.log(color);
-    return color; 
+    return Colors.randomColor();
   }
 
   init() {
-    this.c2d.fillStyle = this.rColor();
     this.animate();
   }
 
