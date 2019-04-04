@@ -14,8 +14,8 @@ export default class CanvasTemplate {
 
   clear() {
     console.log('stopping', this.name);
-    this.c2d.clearRect(0, 0, this.canvasElem.width, this.canvasElem.height);
     window.cancelAnimationFrame(this.raf);
+    this.c2d.clearRect(0, 0, this.canvasElem.width, this.canvasElem.height);
   }
 
   resetTransform() {
@@ -25,6 +25,7 @@ export default class CanvasTemplate {
   buildCanvas() {
     try {
       console.log('Beginning', this.name);
+      this.clear();
       this.init();
     } catch(err) {
       throw err;
