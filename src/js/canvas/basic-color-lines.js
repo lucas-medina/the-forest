@@ -12,22 +12,12 @@ export default class BasicColorLines extends CanvasTemplate {
     this.spacingIterations = 150;
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
-    this.c2d = this.canvasElem.getContext('2d');
     this.goingDown = true;
     this.goingRight = true;
-    this.debugAnimation = false;
   }
 
   rColor() {
     return Colors.randomColor();
-  }
-
-  init() {
-    this.animate();
-  }
-
-  animate() {
-    this.raf = window.requestAnimationFrame(this.move.bind(this));
   }
 
   redoDirectionalSpeeds() {
@@ -36,16 +26,7 @@ export default class BasicColorLines extends CanvasTemplate {
     this.c2d.fillStyle = this.rColor();
   }
 
-  move() {
-    if (this.debugAnimation) {
-      this.fpsControl += 1;
-      if (this.fpsDebugMax === this.fpsControl) {
-        this.fpsControl = 0;
-      } else {
-        this.animate();
-        return;
-      }
-    }
+  animate() {
 
     const { size } = this;
     const maxHeight = this.canvasElem.height;
@@ -72,7 +53,5 @@ export default class BasicColorLines extends CanvasTemplate {
       let coordsAndSize = [this.x += hMovement, this.y += vMovement, size, size];
       this.c2d.fillRect(...coordsAndSize);
     }
-
-    this.animate();
   }
 }

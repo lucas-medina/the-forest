@@ -5,7 +5,7 @@ export default class ColorLines2 extends CanvasTemplate {
   constructor(name, canvasElem) {
     super(name, canvasElem);
 
-    this.lineCount = 25;
+    this.lineCount = 5;
     this.size = 25;
     this.speed = 1;
     
@@ -13,9 +13,8 @@ export default class ColorLines2 extends CanvasTemplate {
     this.animate = this.animate.bind(this);
   }
 
-  init() {
+  canvasWillMount() {
     this.buildExtrudes();
-    this.raf = window.requestAnimationFrame(this.animate);
   }
 
   buildExtrudes() {
@@ -31,16 +30,10 @@ export default class ColorLines2 extends CanvasTemplate {
     }
   }
 
-  clean() {
-    this.c2d.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  }
-
   animate() {
-    // this.clean();
     this.extrudeList.forEach(extrude => {
       extrude.live(this.c2d);
     });
-    window.requestAnimationFrame(this.animate);
   }
   
 }

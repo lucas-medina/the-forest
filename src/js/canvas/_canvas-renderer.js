@@ -12,12 +12,13 @@ export default class CanvasRenderer {
     this.canvasElem.width = window.innerWidth;
     this.canvasElem.height = window.innerHeight;
     this.currentCanvas;
+    this.ready = false;
 
     this.canvasList = [
-      new Basics('Basics', this.canvasElem),
+      // new Basics('Basics', this.canvasElem),
       new BasicColorLines('Color Lines #1', this.canvasElem),
-      new BasicsTwoTheAciddent('Basics #2 (It was an accident!)', this.canvasElem),
-      new ColorLines2('Color Lines #2', this.canvasElem)
+      // new BasicsTwoTheAciddent('Basics #2 (It was an accident!)', this.canvasElem),
+      // new ColorLines2('Color Lines #2', this.canvasElem)
     ];
     
     this.buildMenu();
@@ -38,10 +39,10 @@ export default class CanvasRenderer {
     const canvasId = window.location.hash.replace('#', '');
     const selectedCanvas = this.canvasList.find(item => item.code === canvasId);
     if (this.currentCanvas) {
-      this.currentCanvas.clear();
+      this.currentCanvas.unmount();
     }
-    this.currentCanvas = selectedCanvas;
-    selectedCanvas.buildCanvas();
+    selectedCanvas.mount();
     this.canvasElem.setAttribute('data-code', selectedCanvas.code);
+    this.currentCanvas = selectedCanvas;
   }
 }
