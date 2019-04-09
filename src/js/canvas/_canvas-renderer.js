@@ -2,6 +2,7 @@ import BasicColorLines from './basic-color-lines';
 import Basics from './basics';
 import BasicsTwoTheAciddent from './basics-2-the-accident';
 import ExtrudeBlocks from './extrude-blocks';
+import BreakingChrome from './breaking-chrome';
 
 export default class CanvasRenderer {
 
@@ -17,7 +18,8 @@ export default class CanvasRenderer {
       new Basics('Basics', this.canvasElem),
       new BasicColorLines('Color Lines #1', this.canvasElem),
       new BasicsTwoTheAciddent('Basics #2 (It was an accident!)', this.canvasElem),
-      new ExtrudeBlocks('Extrude Blocks #1', this.canvasElem)
+      new ExtrudeBlocks('Extrude Blocks #1', this.canvasElem),
+      new BreakingChrome('Does this break Chrome?', this.canvasElem)
     ];
     
     this.buildMenu();

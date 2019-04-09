@@ -7,6 +7,8 @@ export default class CanvasTemplate {
     this.c2d = this.canvasElem.getContext('2d');
     this.raf; // all requestAnimationFrame must point to this property
     this._mustAnimate = true;
+    this.canvasWidth = this.canvasElem.width;
+    this.canvasHeight = this.canvasElem.height;
 
     this._preAnimate = this._preAnimate.bind(this);
   }

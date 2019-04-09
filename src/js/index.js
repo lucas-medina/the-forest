@@ -30,6 +30,4 @@ class Forest {
   }
 }
 
-(() => {
-  return new Forest().init();
-})();
+var Application = new Forest().init();
