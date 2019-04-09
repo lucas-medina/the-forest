@@ -28,14 +28,8 @@ export default class CanvasTemplate {
     if (!this._mustAnimate) {
       return;
     }
-    this._litCanvas();
     this.animate();
     this.raf = window.requestAnimationFrame(this._preAnimate);
-  }
-
-  _litCanvas() {
-    this.canvasElem.width = window.innerWidth;
-    this.canvasElem.height = window.innerHeight;
   }
 
   _startRaf() {

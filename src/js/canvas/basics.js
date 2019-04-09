@@ -11,16 +11,11 @@ export default class Basics extends CanvasTemplate {
     this.goingDown = true;
   }
 
-  init() {
+  canvasWillMount() {
     this.c2d.fillStyle = '#000';
-    this.animate();
   }
 
   animate() {
-    this.raf = window.requestAnimationFrame(this.move.bind(this));
-  }
-
-  move() {
     this.c2d.clearRect(0, 0, this.canvasElem.width, this.canvasElem.height);
 
     const { size } = this;
@@ -33,7 +28,5 @@ export default class Basics extends CanvasTemplate {
 
     let coordsAndSize = [this.x += 1, this.y += verticalIncrementor, size, size];
     this.c2d.fillRect(...coordsAndSize);
-
-    this.animate();
   }
 }

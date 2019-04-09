@@ -8,12 +8,13 @@ export default class BasicColorLines extends CanvasTemplate {
     this.size = 25;
     this.x = Math.ceil(Math.random() * 200);
     this.y = Math.ceil(Math.random() * 200);
-    this.maxIncrementor = 150;
-    this.spacingIterations = 150;
+    this.maxIncrementor = 100;
+    this.spacingIterations = 25;
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.goingDown = true;
     this.goingRight = true;
+    this.color = this.rColor();
   }
 
   rColor() {
@@ -23,7 +24,7 @@ export default class BasicColorLines extends CanvasTemplate {
   redoDirectionalSpeeds() {
     this.vspeed = Math.ceil(Math.random() * this.maxIncrementor);
     this.hspeed = Math.ceil(Math.random() * this.maxIncrementor);
-    this.c2d.fillStyle = this.rColor();
+    this.color = this.rColor();
   }
 
   animate() {
@@ -51,6 +52,7 @@ export default class BasicColorLines extends CanvasTemplate {
       let hMovement = horizontalIncrementor / this.spacingIterations;
       let vMovement = verticalIncrementor / this.spacingIterations;
       let coordsAndSize = [this.x += hMovement, this.y += vMovement, size, size];
+      this.c2d.fillStyle = this.color;
       this.c2d.fillRect(...coordsAndSize);
     }
   }
